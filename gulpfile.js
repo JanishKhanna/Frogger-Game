@@ -24,6 +24,7 @@ gulp.task('js', function() {
     .pipe(babel({
         presets: ['@babel/env']
     }))
+    .pipe(concat('main.js'))
     .pipe(uglify())
 });
 
