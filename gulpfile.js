@@ -10,7 +10,7 @@ gulp.task('css', function() {
     return gulp.src('./src/css/**/*.css')
     .pipe(autoprefixer())
     .pipe(cleanCSS())
-    .pipe(gulp.dest('./dist/css/'))
+    .pipe(gulp.dest('./dist/css/'));
 });
 
 gulp.task('image', function() {
@@ -26,6 +26,7 @@ gulp.task('js', function() {
     }))
     .pipe(concat('main.js'))
     .pipe(uglify())
+    .pipe(gulp.dest('.dist/js'));
 });
 
 gulp.task('default', ['css', 'js', 'image'], function() {
