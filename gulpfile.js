@@ -11,5 +11,23 @@ gulp.task('css', function() {
     .pipe(autoprefixer())
     .pipe(cleanCSS())
     .pipe(gulp.dest('./dist/css/'))
-})
+});
 
+gulp.task('image', function() {
+    gulp.src('./src/images/**/*')
+        .pipe(imagemin())
+        .pipe(gulp.dest('./dist/images/'));
+});
+
+gulp.task('js', function() {
+    return gulp.src('./src/js/**/*.js')
+    .pipe(babel({
+        presets: ['@babel/env']
+    }))
+    .pipe(uglify())
+});
+
+gulp.task('default', ['css', 'js', 'image'], function() {
+    gulp.watch('./src/css/**/*.css', ['css']);
+    gulp.watch('./src/js/**/*.js', ['js']);
+})
